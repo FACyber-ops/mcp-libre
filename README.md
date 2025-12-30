@@ -198,9 +198,23 @@ Generate configuration automatically:
 
 Then restart Claude Desktop and start using LibreOffice commands:
 - *"Create a new Writer document and save it as project-report.odt"*
-- *"Convert my document to PDF format"*
 
-### 3. Super Assistant Chrome Extension
+### 3. OpenWebUI (OpenAPI Tools)
+
+OpenWebUI can call tools defined by an OpenAPI spec. This repo includes an
+OpenAPI server wrapper for the MCP tools.
+
+1. **Start the OpenAPI server**:
+   ```bash
+   uv run python src/openapi_server.py --host 127.0.0.1 --port 8001
+   ```
+
+2. **Add the tool in OpenWebUI**:
+   - **OpenAPI URL**: `http://127.0.0.1:8001`
+   - Save and enable the tool in your model/workspace
+
+
+### 4. Super Assistant Chrome Extension
 
 Generate configuration and start proxy:
 ```bash
@@ -209,7 +223,7 @@ npx @srbhptl39/mcp-superassistant-proxy@latest --config ~/Documents/mcp/mcp.conf
 # Server URL: http://localhost:3006
 ```
 
-### 4. Direct MCP Client
+### 5. Direct MCP Client
 ```python
 from mcp.shared.memory import create_connected_server_and_client_session
 from libremcp import mcp
